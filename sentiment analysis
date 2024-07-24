@@ -1,0 +1,24 @@
+# sentiment_analysis.py
+
+import pandas as pd
+from textblob import TextBlob
+
+# Sample text for sentiment analysis
+texts = [
+    "I love this product!",
+    "This is the worst experience ever.",
+    "I'm so happy with the service."
+]
+
+def analyze_sentiments(texts):
+    results = []
+    for text in texts:
+        analysis = TextBlob(text)
+        sentiment = 'Positive' if analysis.sentiment.polarity > 0 else 'Negative'
+        results.append((text, sentiment))
+    return results
+
+if __name__ == "__main__":
+    sentiments = analyze_sentiments(texts)
+    for text, sentiment in sentiments:
+        print(f"Text: {text}\nSentiment: {sentiment}\n")
